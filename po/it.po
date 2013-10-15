@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xfce4-windowck-plugin 0.0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-04-09 11:39+0200\n"
-"PO-Revision-Date: 2013-04-05 10:39+0100\n"
+"POT-Creation-Date: 2013-10-15 08:14+0200\n"
+"PO-Revision-Date: 2013-10-15 08:36+0100\n"
 "Last-Translator: Alessio Piccoli <alepic@geckoblu.net>\n"
 "Language-Team: Italian\n"
 "Language: it\n"
@@ -16,31 +16,112 @@ msgstr ""
 "Content-Type: text/plain; charset=ASCII\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 1.5.4\n"
 
-#: ../panel-plugin/windowck-dialogs.c:37
+#: ../panel-plugin/title/windowck-dialogs.c:50
 #, c-format
 msgid "Unable to open the following url: %s"
 msgstr "Impossibile aprire l'url: %s"
 
 #. create the dialog
-#: ../panel-plugin/windowck-dialogs.c:104
-#: ../panel-plugin/xfce4-windowck-plugin.desktop.in.h:1
+#: ../panel-plugin/title/windowck-dialogs.c:342
 msgid "Window Controls"
 msgstr "Window Controls"
 
-#: ../panel-plugin/windowck-dialogs.c:139
-#: ../panel-plugin/xfce4-windowck-plugin.desktop.in.h:2
+#: ../panel-plugin/title/windowck-dialogs.glade.h:1
+msgid "Control maximized windows."
+msgstr "Gestisci finestre massimizate."
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:2
+msgid "Control active windows."
+msgstr "Gestisci finestre attive."
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:3
+msgid "Show the title on desktop."
+msgstr "Mostra il titolo sul desktop."
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:4
+msgid "<b>Behaviour</b>"
+msgstr "<b>Aspetto</b>"
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:5
+msgid "Width :"
+msgstr "Larghezza:"
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:6
+msgid "Restart the applet to apply changes on size mode."
+msgstr "Riavviare l'applet per applicare i cambiamenti."
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:7
+msgid " chars"
+msgstr "caratteri"
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:8
+msgid "Alignment :"
+msgstr "Allineamento:"
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:9
+msgid "Padding :"
+msgstr ""
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:10
+msgid "pixels"
+msgstr ""
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:11
+msgid "Font style:"
+msgstr "Stile carattere:"
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:12
+msgid "custom"
+msgstr ""
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:13
+msgid "Show the window Icon."
+msgstr "Mostra l'icona della finestra."
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:14
+msgid "Place the icon on right."
+msgstr "Mostra l'icona sulla destra"
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:15
+msgid "<b>Appearance</b>"
+msgstr "<b>Aspetto</b>"
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:16
+msgid "at most"
+msgstr "al massimo"
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:17
+msgid "fixed to"
+msgstr "espandi"
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:18
+msgid "expand"
+msgstr "espandi"
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:19
+msgid "left"
+msgstr "sinistra"
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:20
+msgid "center"
+msgstr "centro"
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:21
+msgid "right"
+msgstr "destra"
+
+#: ../panel-plugin/title/windowck-plugin.desktop.in.h:1
+msgid "Window Title"
+msgstr "Window Title"
+
+#: ../panel-plugin/title/windowck-plugin.desktop.in.h:2
 msgid "Put the maximized window title on the panel."
 msgstr "Mostra il titolo della finestra massimizzata sul pannello."
 
-#: ../panel-plugin/windowck-dialogs.c:139
-msgid "Copyright (c) 2013\n"
-msgstr "Copyright (c) 2013\n"
+#~ msgid "Copyright (c) 2013\n"
+#~ msgstr "Copyright (c) 2013\n"
 
-#: ../panel-plugin/windowck-dialogs.glade.h:1
-msgid "Width (in chars)"
-msgstr "Larghezza (in caratteri)"
-
-#: ../panel-plugin/windowck-dialogs.glade.h:2
-msgid "<b>Appearance</b>"
-msgstr "<b>Aspetto</b>"
+#~ msgid "Width (in chars)"
+#~ msgstr "Larghezza (in caratteri)"
