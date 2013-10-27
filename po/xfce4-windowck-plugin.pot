@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-04-05 09:40+0200\n"
+"POT-Creation-Date: 2013-10-15 08:14+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,28 +17,104 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../panel-plugin/windowck-dialogs.c:44
+#: ../panel-plugin/title/windowck-dialogs.c:50
 #, c-format
 msgid "Unable to open the following url: %s"
 msgstr ""
 
 #. create the dialog
-#: ../panel-plugin/windowck-dialogs.c:111
+#: ../panel-plugin/title/windowck-dialogs.c:342
 msgid "Window Controls"
 msgstr ""
 
-#: ../panel-plugin/windowck-dialogs.c:146
-msgid "Put the maximized window title on the panel."
+#: ../panel-plugin/title/windowck-dialogs.glade.h:1
+msgid "Control maximized windows."
 msgstr ""
 
-#: ../panel-plugin/windowck-dialogs.c:146
-msgid "Copyright (c) 2013\n"
+#: ../panel-plugin/title/windowck-dialogs.glade.h:2
+msgid "Control active windows."
 msgstr ""
 
-#: ../panel-plugin/windowck-dialogs.glade.h:1
-msgid "Width (in chars)"
+#: ../panel-plugin/title/windowck-dialogs.glade.h:3
+msgid "Show the title on desktop."
 msgstr ""
 
-#: ../panel-plugin/windowck-dialogs.glade.h:2
+#: ../panel-plugin/title/windowck-dialogs.glade.h:4
+msgid "<b>Behaviour</b>"
+msgstr ""
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:5
+msgid "Width :"
+msgstr ""
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:6
+msgid "Restart the applet to apply changes on size mode."
+msgstr ""
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:7
+msgid " chars"
+msgstr ""
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:8
+msgid "Alignment :"
+msgstr ""
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:9
+msgid "Padding :"
+msgstr ""
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:10
+msgid "pixels"
+msgstr ""
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:11
+msgid "Font style:"
+msgstr ""
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:12
+msgid "custom"
+msgstr ""
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:13
+msgid "Show the window Icon."
+msgstr ""
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:14
+msgid "Place the icon on right."
+msgstr ""
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:15
 msgid "<b>Appearance</b>"
+msgstr ""
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:16
+msgid "at most"
+msgstr ""
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:17
+msgid "fixed to"
+msgstr ""
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:18
+msgid "expand"
+msgstr ""
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:19
+msgid "left"
+msgstr ""
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:20
+msgid "center"
+msgstr ""
+
+#: ../panel-plugin/title/windowck-dialogs.glade.h:21
+msgid "right"
+msgstr ""
+
+#: ../panel-plugin/title/windowck-plugin.desktop.in.h:1
+msgid "Window Title"
+msgstr ""
+
+#: ../panel-plugin/title/windowck-plugin.desktop.in.h:2
+msgid "Put the maximized window title on the panel."
 msgstr ""
