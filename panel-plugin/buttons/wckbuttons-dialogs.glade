@@ -27,6 +27,7 @@
                 <property name="top_padding">5</property>
                 <property name="bottom_padding">3</property>
                 <property name="left_padding">12</property>
+                <property name="right_padding">10</property>
                 <child>
                   <object class="GtkVBox" id="vbox1">
                     <property name="visible">True</property>
