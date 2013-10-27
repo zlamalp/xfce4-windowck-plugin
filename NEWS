@@ -1,3 +1,10 @@
+0.1.1
+    Add tooltip on size_mode combobox and correct a misspelling.
+    Fix maximize button action.
+    Fix window tracking issue when desktop displayed and others special cases.
+    Fix theme loading.
+    Update Italian and French translations.
+
 0.1.0
     Improve controlled window state tracking.
     Add wckbuttons plugin.
