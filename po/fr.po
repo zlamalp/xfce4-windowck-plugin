@@ -1,132 +1,133 @@
-# Italian translations for xfce4-windowck-plugin package.
+# French translations for xfce4-windowck-plugin package.
 # Copyright (C) 2013 THE xfce4-windowck-plugin'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the xfce4-windowck-plugin package.
-# Alessio <alepic@geckoblu.net>, 2013.
+# Cédric Leporcq <cedl38@gmail.com>, 2013.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: xfce4-windowck-plugin 0.1.1\n"
+"Project-Id-Version: 0.1.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-10-28 14:07+0100\n"
-"PO-Revision-Date: 2013-10-15 08:36+0100\n"
-"Last-Translator: Alessio Piccoli <alepic@geckoblu.net>\n"
-"Language-Team: Italian\n"
-"Language: it\n"
+"PO-Revision-Date: 2013-10-27 12:39+0100\n"
+"Last-Translator: Cédric Leporcq <cedl38@gmail.com>\n"
+"Language-Team: French\n"
+"Language: fr\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=ASCII\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.5.4\n"
+"X-Generator: Poedit 1.5.7\n"
 
 #: ../panel-plugin/title/windowck-dialogs.c:50
 #: ../panel-plugin/buttons/wckbuttons-dialogs.c:100
 #, c-format
 msgid "Unable to open the following url: %s"
-msgstr "Impossibile aprire l'url: %s"
+msgstr "Impossible d'ouvrir l'url suivant : %s"
 
 #: ../panel-plugin/title/windowck-dialogs.glade.h:1
 #: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:1
 msgid "Control maximized windows."
-msgstr "Gestisci finestre massimizate."
+msgstr "Contrôler les fenêtres maximisées."
 
 #: ../panel-plugin/title/windowck-dialogs.glade.h:2
 #: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:2
 msgid "Control active windows."
-msgstr "Gestisci finestre attive."
+msgstr "Contrôler les fenêtres actives."
 
 #: ../panel-plugin/title/windowck-dialogs.glade.h:3
 msgid "Show the plugin on desktop."
-msgstr "Mostra il plugin sul desktop."
+msgstr "Afficher le plugin sur le bureau."
 
 #: ../panel-plugin/title/windowck-dialogs.glade.h:4
 #: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:4
 msgid "<b>Behaviour</b>"
-msgstr "<b>Aspetto</b>"
+msgstr "<b>Comportement</b>"
 
 #: ../panel-plugin/title/windowck-dialogs.glade.h:5
 msgid "Width:"
-msgstr "Larghezza:"
+msgstr "Largeur :"
 
 #: ../panel-plugin/title/windowck-dialogs.glade.h:6
 msgid "Restart the plugin to apply changes on size mode."
-msgstr "Riavviare l'plugin per applicare i cambiamenti."
+msgstr ""
+"Redémarrer le plugin pour appliquer les changements du mode de "
+"dimensionnement."
 
 #: ../panel-plugin/title/windowck-dialogs.glade.h:7
 msgid "chars"
-msgstr "caratteri"
+msgstr "caractères"
 
 #: ../panel-plugin/title/windowck-dialogs.glade.h:8
 msgid "Alignment:"
-msgstr "Allineamento:"
+msgstr "Alignement :"
 
 #: ../panel-plugin/title/windowck-dialogs.glade.h:9
 msgid "Padding:"
-msgstr ""
+msgstr "Espacement :"
 
 #: ../panel-plugin/title/windowck-dialogs.glade.h:10
 msgid "pixels"
-msgstr ""
+msgstr "pixels"
 
 #: ../panel-plugin/title/windowck-dialogs.glade.h:11
 msgid "Font style:"
-msgstr "Stile carattere:"
+msgstr "Police :"
 
 #: ../panel-plugin/title/windowck-dialogs.glade.h:12
 msgid "custom"
-msgstr ""
+msgstr "personnalisée"
 
 #: ../panel-plugin/title/windowck-dialogs.glade.h:13
 msgid "Show the window Icon."
-msgstr "Mostra l'icona della finestra."
+msgstr "Afficher l'icône des fenêtres."
 
 #: ../panel-plugin/title/windowck-dialogs.glade.h:14
 msgid "Place the icon on right."
-msgstr "Mostra l'icona sulla destra"
+msgstr "Placer l'icône sur la droite."
 
 #: ../panel-plugin/title/windowck-dialogs.glade.h:15
 msgid "<b>Appearance</b>"
-msgstr "<b>Aspetto</b>"
+msgstr "<b>Apparence</b>"
 
 #: ../panel-plugin/title/windowck-dialogs.glade.h:16
 msgid "at most"
-msgstr "al massimo"
+msgstr "au plus"
 
 #: ../panel-plugin/title/windowck-dialogs.glade.h:17
 msgid "fixed to"
-msgstr "espandi"
+msgstr "fixé à"
 
 #: ../panel-plugin/title/windowck-dialogs.glade.h:18
 msgid "expand"
-msgstr "espandi"
+msgstr "étendre"
 
 #: ../panel-plugin/title/windowck-dialogs.glade.h:19
 msgid "left"
-msgstr "sinistra"
+msgstr "gauche"
 
 #: ../panel-plugin/title/windowck-dialogs.glade.h:20
 msgid "center"
-msgstr "centro"
+msgstr "centré"
 
 #: ../panel-plugin/title/windowck-dialogs.glade.h:21
 msgid "right"
-msgstr "destra"
+msgstr "droite"
 
 #: ../panel-plugin/title/windowck-plugin.desktop.in.h:1
 msgid "Window Header - Title"
-msgstr ""
+msgstr "Entête des Fenêtres - Titre"
 
 #: ../panel-plugin/title/windowck-plugin.desktop.in.h:2
 msgid "Put the maximized window title on the panel."
-msgstr "Mostra il titolo della finestra massimizzata sul pannello."
+msgstr "Placer le titre des fenêtres maximisées sur le tableau de bord."
 
 #: ../panel-plugin/buttons/wckbuttons-dialogs.glade.h:3
 msgid "Show the buttons on desktop."
-msgstr ""
+msgstr "Afficher le plugin sur le bureau."
 
 #: ../panel-plugin/buttons/wckbuttons.desktop.in.h:1
 msgid "Window Header - Buttons"
-msgstr ""
+msgstr "Entête des Fenêtres - Boutons"
 
 #: ../panel-plugin/buttons/wckbuttons.desktop.in.h:2
 msgid "Put the maximized window buttons on the panel."
-msgstr ""
+msgstr "Placer les boutons des fenêtres maximisées sur le tableau de bord."
