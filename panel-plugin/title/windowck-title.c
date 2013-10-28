@@ -100,7 +100,6 @@ static void on_name_changed(WnckWindow *controlwindow, WindowckPlugin *wckp) {
             title_font = wckp->prefs->title_font;
         else
             title_font = "";
-        updateFont(wckp);
 
         /* Set tooltips */
         if (wckp->prefs->show_tooltips) {
