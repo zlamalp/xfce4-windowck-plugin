@@ -153,11 +153,11 @@ static void windowck_read(WindowckPlugin *wckp) {
 static void createIcon (WindowckPlugin *wckp) {
     wckp->icon = g_slice_new0 (WindowIcon);
     wckp->icon->eventbox = GTK_EVENT_BOX (gtk_event_box_new());
-    wckp->icon->image = GTK_IMAGE (gtk_image_new());
+    wckp->icon->image = gtk_image_new();
 
     gtk_widget_set_can_focus (GTK_WIDGET(wckp->icon->eventbox), TRUE);
 
-    gtk_container_add (GTK_CONTAINER (wckp->icon->eventbox), GTK_WIDGET(wckp->icon->image));
+    gtk_container_add (GTK_CONTAINER (wckp->icon->eventbox), wckp->icon->image);
     gtk_event_box_set_visible_window (wckp->icon->eventbox, FALSE);
 
     gtk_box_pack_start (GTK_BOX (wckp->hvbox), GTK_WIDGET(wckp->icon->eventbox), FALSE, FALSE, 0);

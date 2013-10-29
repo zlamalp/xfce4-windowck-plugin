@@ -47,6 +47,9 @@ static void on_only_maximized_toggled(GtkRadioButton *only_maximized, WindowckPl
 
 static void on_show_on_desktop_toggled(GtkToggleButton *show_on_desktop, WindowckPlugin *wckp) {
     wckp->prefs->show_on_desktop = gtk_toggle_button_get_active(show_on_desktop);
+
+    if (wckp->icon->image)
+        gtk_widget_set_sensitive (wckp->icon->image, TRUE);
     reload_wnck_title (wckp);
 }
 
@@ -150,7 +153,7 @@ static void on_custom_font_toggled(GtkToggleButton *custom_font, WindowckPlugin 
     else
         gtk_widget_set_sensitive(GTK_WIDGET(title_font), FALSE );
 
-    update_font(wckp);
+    updateFont(wckp);
 }
 
 static void on_title_font_font_set(GtkFontButton *title_font, WindowckPlugin *wckp) {
