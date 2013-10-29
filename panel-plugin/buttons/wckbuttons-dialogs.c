@@ -35,12 +35,12 @@
 
 static void on_only_maximized_toggled(GtkRadioButton *only_maximized, WBPlugin *wb) {
     wb->prefs->only_maximized = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(only_maximized));
-    initWnck(wb->win, wb->prefs->only_maximized, wb);
+    reload_wnck (wb->win, wb->prefs->only_maximized, wb);
 }
 
 static void on_show_on_desktop_toggled(GtkToggleButton *show_on_desktop, WBPlugin *wb) {
     wb->prefs->show_on_desktop = gtk_toggle_button_get_active(show_on_desktop);
-    initWnck(wb->win, wb->prefs->only_maximized, wb);
+    reload_wnck (wb->win, wb->prefs->only_maximized, wb);
 }
 
 static GtkWidget * build_properties_area(WBPlugin *wb, const gchar *buffer, gsize length) {
@@ -161,4 +161,3 @@ void wckbuttons_configure (XfcePanelPlugin *plugin, WBPlugin *wb)
     /* show the entire dialog */
     gtk_widget_show (dialog);
 }
-

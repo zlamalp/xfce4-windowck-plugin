@@ -257,13 +257,20 @@ void toggleMaximize (WnckWindow *window) {
         wnck_window_maximize(window);
 }
 
-void initWnck (WckUtils *win, gboolean only_maximized, gpointer data) {
 
+void reload_wnck (WckUtils *win, gboolean only_maximized, gpointer data)
+{
     wck_signal_handler_disconnect (G_OBJECT(win->activescreen), win->sch);
     wck_signal_handler_disconnect (G_OBJECT(win->activescreen), win->soh);
     wck_signal_handler_disconnect (G_OBJECT(win->activescreen), win->svh);
     wck_signal_handler_disconnect (G_OBJECT(win->activescreen), win->swh);
 
+    initWnck (win, only_maximized, data);
+}
+
+
+void initWnck (WckUtils *win, gboolean only_maximized, gpointer data)
+{
     /* save data */
     win->data = data;
 

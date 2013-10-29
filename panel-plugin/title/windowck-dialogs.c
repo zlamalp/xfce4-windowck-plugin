@@ -39,6 +39,18 @@
 #define PLUGIN_WEBSITE "http://goodies.xfce.org/projects/panel-plugins/xfce4-windowck-plugin"
 #define TITLE_SIZE_MIN 3
 
+
+static void on_only_maximized_toggled(GtkRadioButton *only_maximized, WindowckPlugin *wckp) {
+    wckp->prefs->only_maximized = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(only_maximized));
+    reload_wnck_title (wckp);
+}
+
+static void on_show_on_desktop_toggled(GtkToggleButton *show_on_desktop, WindowckPlugin *wckp) {
+    wckp->prefs->show_on_desktop = gtk_toggle_button_get_active(show_on_desktop);
+    reload_wnck_title (wckp);
+}
+
+
 static void windowck_configure_response(GtkWidget *dialog, gint response, WindowckPlugin *wckp) {
     gboolean result;
 
@@ -108,15 +120,6 @@ static void on_size_mode_changed (GtkComboBox *size_mode, WindowckPlugin *wckp) 
     resizeTitle(wckp);
 }
 
-static void on_only_maximized_toggled(GtkRadioButton *only_maximized, WindowckPlugin *wckp) {
-    wckp->prefs->only_maximized = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(only_maximized));
-    initWnck(wckp->win, wckp->prefs->only_maximized, wckp);
-}
-
-static void on_show_on_desktop_toggled(GtkToggleButton *show_on_desktop, WindowckPlugin *wckp) {
-    wckp->prefs->show_on_desktop = gtk_toggle_button_get_active(show_on_desktop);
-    initWnck(wckp->win, wckp->prefs->only_maximized, wckp);
-}
 
 static void on_show_icon_toggled(GtkToggleButton *show_icon, WindowckPlugin *wckp) {
     wckp->prefs->show_icon = gtk_toggle_button_get_active(show_icon);
