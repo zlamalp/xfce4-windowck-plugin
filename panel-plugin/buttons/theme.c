@@ -234,17 +234,15 @@ void loadTheme (WBPlugin *wb)
     gint i,j;
     gchar imagename[30];
     gchar *theme;
-    const char *spec;
     xfwmColorSymbol colsym[ XPM_COLOR_SYMBOL_SIZE + 1 ];
 
-    while (ui_part[i] && ui_state[i])
+    for (i = 0; ui_part[i] && ui_state[i]; i++)
     {
         gchar *color;
 
         color = getUIStyle  (GTK_WIDGET(wb->plugin), ui_part[i], ui_state[i]);
         setStringValue (rc[i].option, color, rc);
         g_free (color);
-        ++i;
     }
 
     for (i = 0; i < XPM_COLOR_SYMBOL_SIZE; i++)
