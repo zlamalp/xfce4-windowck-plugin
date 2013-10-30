@@ -119,7 +119,6 @@ wckbuttons_configure_response (GtkWidget *dialog, gint response, WBPlugin *wb)
 void wckbuttons_configure (XfcePanelPlugin *plugin, WBPlugin *wb)
 {
     GtkWidget *dialog;
-    GtkBuilder *builder;
     GtkWidget *content_area;
     GtkWidget *ca;
     const gchar *name;

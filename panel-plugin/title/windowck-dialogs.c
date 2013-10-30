@@ -339,7 +339,6 @@ static GtkWidget * build_properties_area(WindowckPlugin *wckp, const gchar *buff
 
 void windowck_configure(XfcePanelPlugin *plugin, WindowckPlugin *wckp) {
     GtkWidget *dialog;
-    GtkBuilder *builder;
     GtkWidget *content_area;
     GtkWidget *ca;
     const gchar *name;

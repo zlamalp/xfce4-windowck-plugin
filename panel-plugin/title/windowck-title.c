@@ -142,15 +142,21 @@ static void on_name_changed(WnckWindow *controlwindow, WindowckPlugin *wckp) {
     }
 }
 
-void on_wck_state_changed (WnckWindow *controlwindow, WindowckPlugin *wckp) {
+
+void on_wck_state_changed (WnckWindow *controlwindow, gpointer data)
+{
+    WindowckPlugin *wckp = data;
+
     on_name_changed (controlwindow, wckp);
     if (wckp->prefs->show_icon)
         on_icon_changed (wckp->win->controlwindow, wckp);
 }
 
 
-void on_control_window_changed (WnckWindow *controlwindow, WnckWindow *previous, WindowckPlugin *wckp)
+void on_control_window_changed (WnckWindow *controlwindow, WnckWindow *previous, gpointer data)
 {
+    WindowckPlugin *wckp = data;
+
     /* disconect previous window title signal */
     wck_signal_handler_disconnect (G_OBJECT(previous), wckp->cnh);
 
@@ -267,8 +273,6 @@ gboolean on_icon_released(GtkWidget *title, GdkEventButton *event, WindowckPlugi
 }
 
 static void setTitleColors(WindowckPlugin *wckp) {
-    gchar *title_color;
-    GdkPixbuf *icon_pixbuf;
     GdkColor  color, textColor, bgColor;
 
     /* get plugin widget style */

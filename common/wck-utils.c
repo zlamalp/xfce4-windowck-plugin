@@ -113,10 +113,10 @@ static WnckWindow *getUpperMaximized (WckUtils *win) {
 }
 
 /* track the new controled window according to preferences */
-static void trackControledWindow (WckUtils *win) {
+static void trackControledWindow (WckUtils *win)
+{
     WnckWindow      *previous_umax = NULL;
     WnckWindow      *previous_control = NULL;
-    gint i;
 
     previous_control = win->controlwindow;
 
@@ -128,8 +128,8 @@ static void trackControledWindow (WckUtils *win) {
     }
     else if (win->activewindow
             && (!win->activeworkspace
-                || wnck_window_is_in_viewport(win->activewindow, win->activeworkspace)
-            && !wnck_window_is_minimized(win->activewindow)))
+                || wnck_window_is_in_viewport(win->activewindow, win->activeworkspace))
+            && !wnck_window_is_minimized(win->activewindow))
     {
             win->controlwindow = win->activewindow;
     }
@@ -205,8 +205,8 @@ static void on_window_closed (WnckScreen *screen,
 /* Triggers when a new active window is selected */
 static void active_window_changed (WnckScreen *screen,
                                    WnckWindow *previous,
-                                   WckUtils *win) {
-    gint i;
+                                   WckUtils *win)
+{
 
     win->activewindow = wnck_screen_get_active_window(screen);
 

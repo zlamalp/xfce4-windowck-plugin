@@ -200,7 +200,6 @@ wckbuttons_new (XfcePanelPlugin *plugin)
 {
     WBPlugin   *wb;
     GtkOrientation  orientation;
-    GtkWidget      *label;
 
     /* allocate memory for the plugin structure */
     wb = g_slice_new0 (WBPlugin);
@@ -292,7 +291,8 @@ wckbuttons_size_changed (XfcePanelPlugin *plugin,
     return TRUE;
 }
 
-setMaximizeButtonImage (WBPlugin *wb, gushort image_state) {
+static void set_maximize_button_image (WBPlugin *wb, gushort image_state)
+{
     if (wb->win->controlwindow && wnck_window_is_maximized(wb->win->controlwindow)) {
         gtk_image_set_from_pixbuf (wb->button[MAXIMIZE_BUTTON]->image, wb->pixbufs[IMAGE_UNMAXIMIZE][image_state]);
     } else {
@@ -300,7 +300,10 @@ setMaximizeButtonImage (WBPlugin *wb, gushort image_state) {
     }
 }
 
-void on_wck_state_changed (WnckWindow *controlwindow, WBPlugin *wb) {
+void on_wck_state_changed (WnckWindow *controlwindow, gpointer data)
+{
+    WBPlugin *wb = data;
+
     gushort image_state;
 
     if (controlwindow && (wnck_window_is_active(controlwindow)))
@@ -311,12 +314,14 @@ void on_wck_state_changed (WnckWindow *controlwindow, WBPlugin *wb) {
     /* update buttons images */
     gtk_image_set_from_pixbuf (wb->button[MINIMIZE_BUTTON]->image, wb->pixbufs[IMAGE_MINIMIZE][image_state]);
 
-    setMaximizeButtonImage (wb, image_state);
+    set_maximize_button_image (wb, image_state);
 
     gtk_image_set_from_pixbuf (wb->button[CLOSE_BUTTON]->image, wb->pixbufs[IMAGE_CLOSE][image_state]);
 }
 
-void on_control_window_changed (WnckWindow *controlwindow, WnckWindow *previous, WBPlugin *wb) {
+void on_control_window_changed (WnckWindow *controlwindow, WnckWindow *previous, gpointer data)
+{
+    WBPlugin *wb = data;
 
     if (controlwindow
         && (wnck_window_get_window_type (controlwindow) != WNCK_WINDOW_DESKTOP)) {
@@ -401,7 +406,7 @@ static gboolean on_maximize_button_pressed (GtkWidget *event_box,
 
     if (event->button != 1) return FALSE;
 
-    setMaximizeButtonImage (wb, IMAGE_PRESSED);
+    set_maximize_button_image (wb, IMAGE_PRESSED);
 
     return TRUE;
 }
@@ -412,7 +417,7 @@ static gboolean on_maximize_button_hover_leave (GtkWidget *widget,
                          WBPlugin *wb) {
 
     if (wb->win->controlwindow) {
-        setMaximizeButtonImage (wb, wnck_window_is_active(wb->win->controlwindow));
+        set_maximize_button_image (wb, wnck_window_is_active(wb->win->controlwindow));
     }
 
     return TRUE;
@@ -423,7 +428,7 @@ static gboolean on_maximize_button_hover_enter (GtkWidget *widget,
                          GdkEventCrossing *event,
                          WBPlugin *wb) {
 
-    setMaximizeButtonImage (wb, IMAGE_PRELIGHT);
+    set_maximize_button_image (wb, IMAGE_PRELIGHT);
 
     return TRUE;
 }
