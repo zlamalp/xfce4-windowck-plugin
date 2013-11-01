@@ -31,6 +31,5 @@ http://goodies.xfce.org/projects/panel-plugins/xfce4-windowck-plugin
 How to report bugs?
 ===================
 
-Bugs should be reported to the Xfce bug tracking system
-(http://bugzilla.xfce.org, product 'Xfce Panel Plugins', Component
-'Windowck'). You will need to create an account for yourself.
+Bugs should be reported to the GitHub project
+(https://github.com/cedl38/xfce4-windowck-plugin). You will need to create an account for yourself.
