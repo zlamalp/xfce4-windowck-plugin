@@ -286,7 +286,7 @@ void on_control_window_changed (WnckWindow *controlwindow, WnckWindow *previous,
         else if (wckp->prefs->show_on_desktop && !wckp->prefs->show_app_icon)
         {
             if (gtk_widget_get_visible(GTK_WIDGET(wckp->icon->eventbox)))
-                gtk_widget_hide_all (GTK_WIDGET(wckp->icon->eventbox));
+                gtk_widget_hide (GTK_WIDGET(wckp->icon->eventbox));
         }
     }
 

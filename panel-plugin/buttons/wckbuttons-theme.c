@@ -141,7 +141,7 @@ void replace_buttons (const gchar *button_layout, WBPlugin *wb)
     gint button;
 
     for (i = 0; i < BUTTONS; i++)
-        gtk_widget_hide_all(GTK_WIDGET(wb->button[i]->eventbox));
+        gtk_widget_hide(GTK_WIDGET(wb->button[i]->eventbox));
 
     j = 0;
     for (i = 0; i < strlen (button_layout); i++)

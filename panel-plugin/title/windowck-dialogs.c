@@ -523,7 +523,7 @@ void windowck_configure(XfcePanelPlugin *plugin, WindowckPlugin *wckp)
     name = xfce_panel_plugin_get_display_name (plugin);
     dialog = xfce_titled_dialog_new_with_buttons (_(name),
                                                 GTK_WINDOW (gtk_widget_get_toplevel (GTK_WIDGET (plugin))),
-                                                GTK_DIALOG_DESTROY_WITH_PARENT | GTK_DIALOG_NO_SEPARATOR,
+                                                GTK_DIALOG_DESTROY_WITH_PARENT,
                                                 GTK_STOCK_HELP, GTK_RESPONSE_HELP,
                                                 GTK_STOCK_CLOSE, GTK_RESPONSE_OK,
                                                 NULL);

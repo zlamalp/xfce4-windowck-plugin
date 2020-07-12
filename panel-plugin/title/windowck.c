@@ -202,7 +202,7 @@ void create_symbol (gboolean show_app_icon, WindowckPlugin *wckp)
     }
     else
     {
-        gtk_widget_hide_all (GTK_WIDGET(wckp->icon->eventbox));
+        gtk_widget_hide (GTK_WIDGET(wckp->icon->eventbox));
     }
 }
 
