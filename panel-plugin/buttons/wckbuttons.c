@@ -28,7 +28,6 @@
 #include <gtk/gtk.h>
 #include <libxfce4util/libxfce4util.h>
 #include <libxfce4panel/xfce-panel-plugin.h>
-#include <libxfce4panel/xfce-hvbox.h>
 
 #include "wckbuttons.h"
 #include "wckbuttons-dialogs.h"
@@ -166,7 +165,7 @@ static WindowButton **create_buttons (WBPlugin *wb)
 
         gtk_container_add (GTK_CONTAINER (button[i]->eventbox), GTK_WIDGET(button[i]->image));
         gtk_event_box_set_visible_window (button[i]->eventbox, FALSE);
-        gtk_box_pack_start (GTK_BOX (wb->hvbox), GTK_WIDGET(button[i]->eventbox), TRUE, TRUE, 0);
+        gtk_box_pack_start (GTK_BOX (wb->box), GTK_WIDGET(button[i]->eventbox), TRUE, TRUE, 0);
 
         /* Add hover events to eventboxes */
         gtk_widget_add_events (GTK_WIDGET (button[i]->eventbox), GDK_ENTER_NOTIFY_MASK); //add the "enter" signal
@@ -208,14 +207,15 @@ wckbuttons_new (XfcePanelPlugin *plugin)
     gtk_event_box_set_visible_window(GTK_EVENT_BOX(wb->ebox), FALSE);
     gtk_widget_set_name(wb->ebox, "XfceWckButtonsPlugin");
 
-    wb->hvbox = xfce_hvbox_new (orientation, FALSE, 2);
+    wb->box = gtk_box_new (orientation, 2);
+    gtk_box_set_homogeneous (GTK_BOX (wb->box), FALSE);
 
     /* create buttons */
     wb->button = create_buttons (wb);
 
     gtk_widget_show (wb->ebox);
-    gtk_widget_show (wb->hvbox);
-    gtk_container_add (GTK_CONTAINER (wb->ebox), wb->hvbox);
+    gtk_widget_show (wb->box);
+    gtk_container_add (GTK_CONTAINER (wb->ebox), wb->box);
 
     return wb;
 }
@@ -231,7 +231,7 @@ static void wckbuttons_free (XfcePanelPlugin *plugin, WBPlugin    *wb)
     gtk_widget_destroy (dialog);
 
     /* destroy the panel widgets */
-    gtk_widget_destroy (wb->hvbox);
+    gtk_widget_destroy (wb->box);
 
     /* cleanup the settings */
     if (G_LIKELY (wb->prefs->button_layout != NULL))
@@ -249,8 +249,8 @@ wckbuttons_orientation_changed (XfcePanelPlugin *plugin,
                             GtkOrientation   orientation,
                             WBPlugin    *wb)
 {
-  /* change the orienation of the box */
-  xfce_hvbox_set_orientation (XFCE_HVBOX (wb->hvbox), get_orientation (wb->plugin));
+    /* change the orienation of the box */
+    gtk_orientable_set_orientation (GTK_ORIENTABLE (wb->box), get_orientation (wb->plugin));
 }
 
 
@@ -315,13 +315,13 @@ void on_control_window_changed (WnckWindow *controlwindow, WnckWindow *previous,
         || ((wnck_window_get_window_type (controlwindow) == WNCK_WINDOW_DESKTOP)
         && !wb->prefs->show_on_desktop))
     {
-        if (gtk_widget_get_visible(GTK_WIDGET(wb->hvbox)))
-            gtk_widget_hide_all(GTK_WIDGET(wb->hvbox));
+        if (gtk_widget_get_visible(GTK_WIDGET(wb->box)))
+            gtk_widget_hide(GTK_WIDGET(wb->box));
     }
     else
     {
-        if (!gtk_widget_get_visible(GTK_WIDGET(wb->hvbox)))
-            gtk_widget_show_all(GTK_WIDGET(wb->hvbox));
+        if (!gtk_widget_get_visible(GTK_WIDGET(wb->box)))
+            gtk_widget_show_all(GTK_WIDGET(wb->box));
     }
 
     if (controlwindow)
@@ -332,8 +332,8 @@ void on_control_window_changed (WnckWindow *controlwindow, WnckWindow *previous,
                 gtk_widget_set_sensitive(GTK_WIDGET(wb->button[i]->eventbox), TRUE);
 
             on_wck_state_changed (controlwindow, wb);
-            if (!gtk_widget_get_visible(GTK_WIDGET(wb->hvbox)))
-                gtk_widget_show_all(GTK_WIDGET(wb->hvbox));
+            if (!gtk_widget_get_visible(GTK_WIDGET(wb->box)))
+                gtk_widget_show_all(GTK_WIDGET(wb->box));
         }
         else if (wb->prefs->show_on_desktop)
         {

@@ -149,7 +149,7 @@ void replace_buttons (const gchar *button_layout, WBPlugin *wb)
         button = get_button_from_letter (button_layout[i]);
         if (button >= 0 && wb->button[button]->image)
         {
-            gtk_box_reorder_child (GTK_BOX (wb->hvbox), GTK_WIDGET(wb->button[button]->eventbox), j);
+            gtk_box_reorder_child (GTK_BOX (wb->box), GTK_WIDGET(wb->button[button]->eventbox), j);
 
             gtk_widget_show_all(GTK_WIDGET(wb->button[button]->eventbox));
             j++;

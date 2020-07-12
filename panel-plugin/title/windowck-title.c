@@ -266,13 +266,13 @@ void on_control_window_changed (WnckWindow *controlwindow, WnckWindow *previous,
         || ((wnck_window_get_window_type (controlwindow) == WNCK_WINDOW_DESKTOP)
         && !wckp->prefs->show_on_desktop))
     {
-        if (gtk_widget_get_visible(GTK_WIDGET(wckp->hvbox)))
-            gtk_widget_hide_all(GTK_WIDGET(wckp->hvbox));
+        if (gtk_widget_get_visible(GTK_WIDGET(wckp->box)))
+            gtk_widget_hide(GTK_WIDGET(wckp->box));
     }
     else
     {
-        if (!gtk_widget_get_visible(GTK_WIDGET(wckp->hvbox)))
-            gtk_widget_show_all(GTK_WIDGET(wckp->hvbox));
+        if (!gtk_widget_get_visible(GTK_WIDGET(wckp->box)))
+            gtk_widget_show_all(GTK_WIDGET(wckp->box));
     }
 
     if (controlwindow)
@@ -479,7 +479,7 @@ void init_title (WindowckPlugin *wckp)
     }
 
     gtk_alignment_set_padding(GTK_ALIGNMENT(wckp->alignment), ICON_PADDING, ICON_PADDING, wckp->prefs->title_padding, wckp->prefs->title_padding);
-    gtk_box_set_spacing (GTK_BOX(wckp->hvbox), wckp->prefs->title_padding);
+    gtk_box_set_spacing (GTK_BOX(wckp->box), wckp->prefs->title_padding);
 
     /* get the xsettings chanel to update the gtk theme */
     wckp->x_channel = wck_properties_get_channel (G_OBJECT (wckp->plugin), "xsettings");
