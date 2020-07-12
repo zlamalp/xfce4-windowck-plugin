@@ -116,6 +116,7 @@ name_value (const gchar * s)
 GdkColor
 query_color (GtkWidget * win, GdkColor c)
 {
+#if 0 /* TODO: replace GdkColormap */
     GdkColor real_color;
     GdkColormap *cmap;
 
@@ -126,6 +127,7 @@ query_color (GtkWidget * win, GdkColor c)
         return real_color;
     }
     else
+#endif
     {
         return c;
     }
@@ -249,6 +251,7 @@ mix_bg_fg (GtkWidget * win, const gchar * state, float alpha, float beta)
     return (s);
 }
 
+#if 0 /* TODO: replace GdkGC */
 static GdkGC *
 _getUIStyle_gc (const gchar * name, const gchar * state, GtkStyle * style)
 {
@@ -314,6 +317,7 @@ getUIStyle_gc (GtkWidget * win, const gchar * name, const gchar * state)
     }
     return (_getUIStyle_gc (name, state, style));
 }
+#endif
 
 PangoFontDescription *
 getUIPangoFontDesc (GtkWidget * win)
