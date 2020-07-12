@@ -7,3 +7,4 @@ Icon=windowck-plugin
 X-XFCE-Module=windowck
 X-XFCE-Internal=false
 X-XFCE-Unique=false
+X-XFCE-API=2.0
