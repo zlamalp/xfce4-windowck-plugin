@@ -41,11 +41,6 @@ gchar                   *mix_bg_fg                              (GtkWidget * win
 gchar                   *get_ui_color                             (GtkWidget *,
                                                                  const gchar *,
                                                                  const gchar *);
-#if 0 /* TODO: replace GdkGC */
-GdkGC                   *getUIStyle_gc                          (GtkWidget *,
-                                                                 const gchar *,
-                                                                 const gchar *);
-#endif
 PangoFontDescription    *getUIPangoFontDesc                     (GtkWidget *);
 PangoContext            *getUIPangoContext                      (GtkWidget *);
 
