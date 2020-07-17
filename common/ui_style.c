@@ -134,21 +134,11 @@ query_color (GtkWidget * win, GdkColor c)
 }
 
 static gchar *
-print_color (GtkWidget * win, GdkColor color)
-{
-    gchar *s;
-    s = g_new (gchar, 14);
-    g_snprintf (s, 14, "#%04x%04x%04x", color.red, color.green,
-                    color.blue);
-    return s;
-}
-
-static gchar *
 print_colors (GtkWidget * win, GdkColor * x, int n)
 {
     GdkColor color;
     color = query_color (win, x[n]);
-    return print_color(win, color);
+    return gdk_color_to_string(&color);
 }
 
 static gchar *
@@ -245,7 +235,7 @@ mix_bg_fg (GtkWidget * win, const gchar * state, float alpha, float beta)
     bgColor = query_color (win, style->bg[n]);
     fgColor = query_color (win, style->fg[n]);
     color = shade (mix (bgColor, fgColor, alpha), beta);
-    s = print_color (win, color);
+    s = gdk_color_to_string (&color);
 
     TRACE ("mix_bg_fg[%s]=%s", state, s);
     return (s);
