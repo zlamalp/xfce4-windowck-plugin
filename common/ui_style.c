@@ -124,18 +124,10 @@ query_color (GtkWidget * win, GdkColor c)
 }
 
 static gchar *
-print_colors (GtkWidget * win, GdkColor * x, int n)
-{
-    GdkColor color;
-    color = query_color (win, x[n]);
-    return gdk_color_to_string(&color);
-}
-
-static gchar *
 print_rc_style (GtkWidget * win, const gchar * name, const gchar * state,
                 GtkStyle * style)
 {
-    gchar *s;
+    GdkColor color;
     gint n, m;
 
     g_return_val_if_fail (state != NULL, NULL);
@@ -147,13 +139,13 @@ print_rc_style (GtkWidget * win, const gchar * name, const gchar * state,
     switch (m)
     {
         case GTKSTYLE_FG:
-            s = print_colors (win, style->fg, n);
+            color = query_color (win, style->fg[n]);
             break;
         case GTKSTYLE_BG:
-            s = print_colors (win, style->bg, n);
+            color = query_color (win, style->bg[n]);
             break;
     }
-    return (s);
+    return (gdk_color_to_string(&color));
 }
 
 static GtkStyle *
