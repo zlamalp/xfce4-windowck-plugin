@@ -64,6 +64,15 @@ mix (const GdkRGBA* color1, const GdkRGBA* color2, float a)
     return color;
 }
 
+static gchar *
+rgba_to_hex_string (const GdkRGBA * rgba)
+{
+    gchar *s;
+    s = g_new (gchar, 14);
+    g_snprintf (s, 14, "#%04x%04x%04x", (int)(rgba->red * 255), (int)(rgba->green * 255), (int)(rgba->blue * 255));
+    return s;
+}
+
 gchar *
 get_ui_color (GtkWidget * win, const gchar * name, GtkStateFlags state)
 {
@@ -80,7 +89,7 @@ get_ui_color (GtkWidget * win, const gchar * name, GtkStateFlags state)
 
     style = gtk_widget_get_style_context (win);
     gtk_style_context_get (style, state, name, &rgba, NULL);
-    s = gdk_rgba_to_string (rgba);
+    s = rgba_to_hex_string (rgba);
     gdk_rgba_free (rgba);
     TRACE ("%s[%d]=%s", name, state, s);
     return (s);
@@ -109,7 +118,7 @@ mix_bg_fg (GtkWidget * win, GtkStateFlags state, float alpha, float beta)
     gdk_rgba_free (fg_rgba);
 
     rgba = shade (&rgba, beta);
-    s = gdk_rgba_to_string (&rgba);
+    s = rgba_to_hex_string (&rgba);
 
     TRACE ("mix_bg_fg[%d]=%s", state, s);
     return (s);
