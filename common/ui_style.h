@@ -31,7 +31,6 @@
 #include <gtk/gtk.h>
 #include <pango/pango-font.h>
 
-GdkColor query_color (GtkWidget * win, GdkColor c);
 gchar                   *mix_bg_fg                              (GtkWidget * win,
                                                                  GtkStateFlags state,
                                                                  float alpha,

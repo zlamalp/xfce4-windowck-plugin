@@ -40,21 +40,6 @@
 #include <libxfce4util/libxfce4util.h>
 #include "ui_style.h"
 
-char *states[] = {
-    "normal", "active", "prelight", "selected", "insensitive", NULL
-};
-
-char *names[] = {
-    GTK_STYLE_PROPERTY_COLOR, GTK_STYLE_PROPERTY_BACKGROUND_COLOR, NULL
-};
-
-typedef enum {
-    GTKSTYLE_FG = 0,
-    GTKSTYLE_BG,
-
-    COLOR_NAMES
-} ColorNames;
-
 static GdkRGBA
 shade (const GdkRGBA* color, float b)
 {
@@ -77,94 +62,6 @@ mix (const GdkRGBA* color1, const GdkRGBA* color2, float a)
     color.blue = color1->blue * a + color2->blue * (1 - a);
 
     return color;
-}
-
-static gint
-array_index (char *array[], const gchar * s)
-{
-    gint u = 0;
-
-    while ((array[u]) && (strcmp (array[u], s)))
-    {
-        u++;
-    }
-    if (array[u])
-    {
-        return (u);
-    }
-    return (0);
-}
-
-static gint
-state_value (const gchar * s)
-{
-    return (array_index(states, s));
-}
-
-static gint
-name_value (const gchar * s)
-{
-    return (array_index(names, s));
-}
-
-GdkColor
-query_color (GtkWidget * win, GdkColor c)
-{
-#if 0 /* TODO: replace GdkColormap */
-    GdkColor real_color;
-    GdkColormap *cmap;
-
-    cmap = gtk_widget_get_colormap (GTK_WIDGET (win));
-    if (cmap && GDK_IS_COLORMAP (cmap))
-    {
-        gdk_colormap_query_color (cmap, c.pixel, &real_color);
-        return real_color;
-    }
-    else
-#endif
-    {
-        return c;
-    }
-}
-
-static GdkColor
-get_rc_color (GtkWidget * win, const gchar * name, const gchar * state,
-                GtkStyle * style)
-{
-    GdkColor color;
-    gint n, m;
-
-    g_return_val_if_fail (state != NULL, color);
-    g_return_val_if_fail (name != NULL, color);
-
-    n = state_value (state);
-    m = name_value (name);
-
-    switch (m)
-    {
-        case GTKSTYLE_FG:
-            color = query_color (win, style->fg[n]);
-            break;
-        case GTKSTYLE_BG:
-            color = query_color (win, style->bg[n]);
-            break;
-    }
-    return (color);
-}
-
-static GtkStyle *
-get_ui_style (GtkWidget * win)
-{
-    GtkStyle *style;
-
-    TRACE ("entering get_ui_style");
-
-    style = gtk_rc_get_style (win);
-    if (!style)
-    {
-        style = gtk_widget_get_style (win);
-    }
-    return (style);
 }
 
 gchar *
