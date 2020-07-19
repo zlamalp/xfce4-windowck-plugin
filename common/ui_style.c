@@ -55,22 +55,26 @@ typedef enum {
     COLOR_NAMES
 } ColorNames;
 
-GdkColor shade (GdkColor  color, float b)
+static GdkRGBA
+shade (const GdkRGBA* color, float b)
 {
-    color.red = color.red * b;
-    color.green = color.green * b;
-    color.blue = color.blue * b;
+    GdkRGBA rgba;
 
-    return color;
+    rgba.red = color->red * b;
+    rgba.green = color->green * b;
+    rgba.blue = color->blue * b;
+
+    return rgba;
 }
 
-GdkColor mix (GdkColor  color2, GdkColor  color1, float a)
+static GdkRGBA
+mix (const GdkRGBA* color1, const GdkRGBA* color2, float a)
 {
-    GdkColor color;
+    GdkRGBA color;
 
-    color.red = color1.red * a + color2.red * (1 - a);
-    color.green = color1.green * a + color2.green * (1 - a);
-    color.blue = color1.blue * a + color2.blue * (1 - a);
+    color.red = color1->red * a + color2->red * (1 - a);
+    color.green = color1->green * a + color2->green * (1 - a);
+    color.blue = color1->blue * a + color2->blue * (1 - a);
 
     return color;
 }
@@ -164,10 +168,10 @@ get_ui_style (GtkWidget * win)
 }
 
 gchar *
-get_ui_color (GtkWidget * win, const gchar * name, const gchar * state)
+get_ui_color (GtkWidget * win, const gchar * name, GtkStateFlags state)
 {
-    GtkStyle *style;
-    GdkColor color;
+    GtkStyleContext *style;
+    GdkRGBA *rgba;
     gchar *s;
 
     TRACE ("entering get_ui_color");
@@ -175,19 +179,22 @@ get_ui_color (GtkWidget * win, const gchar * name, const gchar * state)
     g_return_val_if_fail (win != NULL, NULL);
     g_return_val_if_fail (GTK_IS_WIDGET (win), NULL);
     g_return_val_if_fail (gtk_widget_get_realized (win), NULL);
+    g_return_val_if_fail (name != NULL, NULL);
 
-    style = get_ui_style (win);
-    color = get_rc_color (win, name, state, style);
-    s = gdk_color_to_string (&color);
+    style = gtk_widget_get_style_context (win);
+    gtk_style_context_get (style, state, name, &rgba, NULL);
+    s = gdk_rgba_to_string (rgba);
+    gdk_rgba_free (rgba);
     TRACE ("%s[%s]=%s", name, state, s);
     return (s);
 }
 
 gchar *
-mix_bg_fg (GtkWidget * win, const gchar * state, float alpha, float beta)
+mix_bg_fg (GtkWidget * win, GtkStateFlags state, float alpha, float beta)
 {
-    GdkColor color, bgColor, fgColor;
-    GtkStyle *style;
+    GtkStyleContext *style;
+    GdkRGBA *fg_rgba, *bg_rgba;
+    GdkRGBA rgba;
     gchar *s;
 
     TRACE ("entering mix_bg_fg_ui");
@@ -196,11 +203,16 @@ mix_bg_fg (GtkWidget * win, const gchar * state, float alpha, float beta)
     g_return_val_if_fail (GTK_IS_WIDGET (win), NULL);
     g_return_val_if_fail (gtk_widget_get_realized (win), NULL);
 
-    style = get_ui_style (win);
-    bgColor = get_rc_color (win, GTK_STYLE_PROPERTY_BACKGROUND_COLOR, state, style);
-    fgColor = get_rc_color (win, GTK_STYLE_PROPERTY_COLOR, state, style);
-    color = shade (mix (bgColor, fgColor, alpha), beta);
-    s = gdk_color_to_string (&color);
+    style = gtk_widget_get_style_context (win);
+
+    gtk_style_context_get (style, state, GTK_STYLE_PROPERTY_COLOR, &fg_rgba, NULL);
+    gtk_style_context_get (style, state, GTK_STYLE_PROPERTY_BACKGROUND_COLOR, &bg_rgba, NULL);
+    rgba = mix (fg_rgba, bg_rgba, alpha);
+    gdk_rgba_free (bg_rgba);
+    gdk_rgba_free (fg_rgba);
+
+    rgba = shade (&rgba, beta);
+    s = gdk_rgba_to_string (&rgba);
 
     TRACE ("mix_bg_fg[%s]=%s", state, s);
     return (s);

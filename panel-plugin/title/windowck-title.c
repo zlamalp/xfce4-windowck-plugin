@@ -232,20 +232,20 @@ void on_wck_state_changed (WnckWindow *controlwindow, gpointer data)
         }
         else
         {
-            GdkColor color;
+            GdkRGBA rgba;
 
             if (controlwindow
                 && ((wnck_window_get_window_type (controlwindow) != WNCK_WINDOW_DESKTOP)
                     || wckp->prefs->show_on_desktop))
             {
                 if (wnck_window_is_active(controlwindow)
-                    && gdk_color_parse (wckp->prefs->active_text_color, &color))
+                    && gdk_rgba_parse (&rgba, wckp->prefs->active_text_color))
                 {
-                    gtk_widget_modify_fg (wckp->icon->symbol, GTK_STATE_NORMAL, &color);
+                    gtk_widget_override_color (wckp->icon->symbol, GTK_STATE_FLAG_NORMAL, &rgba);
                 }
-                else if (gdk_color_parse (wckp->prefs->inactive_text_color, &color))
+                else if (gdk_rgba_parse (&rgba, wckp->prefs->inactive_text_color))
                 {
-                    gtk_widget_modify_fg (wckp->icon->symbol, GTK_STATE_NORMAL, &color);
+                    gtk_widget_override_color (wckp->icon->symbol, GTK_STATE_FLAG_NORMAL, &rgba);
                 }
             }
         }
@@ -389,8 +389,8 @@ gboolean on_icon_released(GtkWidget *title, GdkEventButton *event, WindowckPlugi
 static void set_title_colors(WindowckPlugin *wckp)
 {
     /* get plugin widget style */
-    wckp->prefs->active_text_color = get_ui_color  (GTK_WIDGET(wckp->plugin), GTK_STYLE_PROPERTY_COLOR, "normal");
-    wckp->prefs->inactive_text_color = mix_bg_fg (GTK_WIDGET(wckp->plugin), "normal", wckp->prefs->inactive_text_alpha / 100.0, wckp->prefs->inactive_text_shade / 100.0);
+    wckp->prefs->active_text_color = get_ui_color (GTK_WIDGET(wckp->plugin), GTK_STYLE_PROPERTY_COLOR, GTK_STATE_FLAG_NORMAL);
+    wckp->prefs->inactive_text_color = mix_bg_fg (GTK_WIDGET(wckp->plugin), GTK_STATE_FLAG_NORMAL, wckp->prefs->inactive_text_alpha / 100.0, wckp->prefs->inactive_text_shade / 100.0);
 }
 
 
