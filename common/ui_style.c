@@ -82,7 +82,7 @@ get_ui_color (GtkWidget * win, const gchar * name, GtkStateFlags state)
     gtk_style_context_get (style, state, name, &rgba, NULL);
     s = gdk_rgba_to_string (rgba);
     gdk_rgba_free (rgba);
-    TRACE ("%s[%s]=%s", name, state, s);
+    TRACE ("%s[%d]=%s", name, state, s);
     return (s);
 }
 
@@ -94,7 +94,7 @@ mix_bg_fg (GtkWidget * win, GtkStateFlags state, float alpha, float beta)
     GdkRGBA rgba;
     gchar *s;
 
-    TRACE ("entering mix_bg_fg_ui");
+    TRACE ("entering mix_bg_fg");
 
     g_return_val_if_fail (win != NULL, NULL);
     g_return_val_if_fail (GTK_IS_WIDGET (win), NULL);
@@ -111,7 +111,7 @@ mix_bg_fg (GtkWidget * win, GtkStateFlags state, float alpha, float beta)
     rgba = shade (&rgba, beta);
     s = gdk_rgba_to_string (&rgba);
 
-    TRACE ("mix_bg_fg[%s]=%s", state, s);
+    TRACE ("mix_bg_fg[%d]=%s", state, s);
     return (s);
 }
 
