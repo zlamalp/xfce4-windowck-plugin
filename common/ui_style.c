@@ -123,15 +123,15 @@ query_color (GtkWidget * win, GdkColor c)
     }
 }
 
-static gchar *
-print_rc_style (GtkWidget * win, const gchar * name, const gchar * state,
+static GdkColor
+get_rc_color (GtkWidget * win, const gchar * name, const gchar * state,
                 GtkStyle * style)
 {
     GdkColor color;
     gint n, m;
 
-    g_return_val_if_fail (state != NULL, NULL);
-    g_return_val_if_fail (name != NULL, NULL);
+    g_return_val_if_fail (state != NULL, color);
+    g_return_val_if_fail (name != NULL, color);
 
     n = state_value (state);
     m = name_value (name);
@@ -145,7 +145,7 @@ print_rc_style (GtkWidget * win, const gchar * name, const gchar * state,
             color = query_color (win, style->bg[n]);
             break;
     }
-    return (gdk_color_to_string(&color));
+    return (color);
 }
 
 static GtkStyle *
@@ -167,6 +167,7 @@ gchar *
 get_ui_color (GtkWidget * win, const gchar * name, const gchar * state)
 {
     GtkStyle *style;
+    GdkColor color;
     gchar *s;
 
     TRACE ("entering get_ui_color");
@@ -176,7 +177,8 @@ get_ui_color (GtkWidget * win, const gchar * name, const gchar * state)
     g_return_val_if_fail (gtk_widget_get_realized (win), NULL);
 
     style = get_ui_style (win);
-    s = print_rc_style (win, name, state, style);
+    color = get_rc_color (win, name, state, style);
+    s = gdk_color_to_string (&color);
     TRACE ("%s[%s]=%s", name, state, s);
     return (s);
 }
@@ -187,7 +189,6 @@ mix_bg_fg (GtkWidget * win, const gchar * state, float alpha, float beta)
     GdkColor color, bgColor, fgColor;
     GtkStyle *style;
     gchar *s;
-    gint n;
 
     TRACE ("entering mix_bg_fg_ui");
 
@@ -196,10 +197,8 @@ mix_bg_fg (GtkWidget * win, const gchar * state, float alpha, float beta)
     g_return_val_if_fail (gtk_widget_get_realized (win), NULL);
 
     style = get_ui_style (win);
-    n = state_value (state);
-
-    bgColor = query_color (win, style->bg[n]);
-    fgColor = query_color (win, style->fg[n]);
+    bgColor = get_rc_color (win, GTK_STYLE_PROPERTY_BACKGROUND_COLOR, state, style);
+    fgColor = get_rc_color (win, GTK_STYLE_PROPERTY_COLOR, state, style);
     color = shade (mix (bgColor, fgColor, alpha), beta);
     s = gdk_color_to_string (&color);
 
