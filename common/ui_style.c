@@ -82,15 +82,15 @@ GdkColor mix (GdkColor  color2, GdkColor  color1, float a)
 }
 
 static gint
-state_value (const gchar * s)
+array_index (char *array[], const gchar * s)
 {
     gint u = 0;
 
-    while ((states[u]) && (strcmp (states[u], s)))
+    while ((array[u]) && (strcmp (array[u], s)))
     {
         u++;
     }
-    if (states[u])
+    if (array[u])
     {
         return (u);
     }
@@ -98,19 +98,15 @@ state_value (const gchar * s)
 }
 
 static gint
+state_value (const gchar * s)
+{
+    return (array_index(states, s));
+}
+
+static gint
 name_value (const gchar * s)
 {
-    gint u = 0;
-
-    while ((names[u]) && (strcmp (names[u], s)))
-    {
-        u++;
-    }
-    if (names[u])
-    {
-        return (u);
-    }
-    return (0);
+    return (array_index(names, s));
 }
 
 GdkColor
