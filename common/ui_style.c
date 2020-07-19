@@ -45,18 +45,12 @@ char *states[] = {
 };
 
 char *names[] = {
-    "fg", "bg", "text", "base", "light", "dark", "mid", NULL
+    GTK_STYLE_PROPERTY_COLOR, GTK_STYLE_PROPERTY_BACKGROUND_COLOR, NULL
 };
 
 typedef enum {
     GTKSTYLE_FG = 0,
     GTKSTYLE_BG,
-    GTKSTYLE_TEXT,
-    GTKSTYLE_BASE,
-    GTKSTYLE_LIGHT,
-    GTKSTYLE_DARK,
-    GTKSTYLE_MID,
-    MIX_BG_TEXT,
 
     COLOR_NAMES
 } ColorNames;
@@ -157,22 +151,6 @@ print_rc_style (GtkWidget * win, const gchar * name, const gchar * state,
             break;
         case GTKSTYLE_BG:
             s = print_colors (win, style->bg, n);
-            break;
-        case GTKSTYLE_TEXT:
-            s = print_colors (win, style->text, n);
-            break;
-        case GTKSTYLE_BASE:
-            s = print_colors (win, style->base, n);
-            break;
-        case GTKSTYLE_LIGHT:
-            s = print_colors (win, style->light, n);
-            break;
-        case GTKSTYLE_DARK:
-            s = print_colors (win, style->dark, n);
-            break;
-        default:
-        case GTKSTYLE_MID:
-            s = print_colors (win, style->mid, n);
             break;
     }
     return (s);

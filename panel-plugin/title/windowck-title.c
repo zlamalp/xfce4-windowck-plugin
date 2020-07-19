@@ -389,7 +389,7 @@ gboolean on_icon_released(GtkWidget *title, GdkEventButton *event, WindowckPlugi
 static void set_title_colors(WindowckPlugin *wckp)
 {
     /* get plugin widget style */
-    wckp->prefs->active_text_color = get_ui_color  (GTK_WIDGET(wckp->plugin), "fg", "normal");
+    wckp->prefs->active_text_color = get_ui_color  (GTK_WIDGET(wckp->plugin), GTK_STYLE_PROPERTY_COLOR, "normal");
     wckp->prefs->inactive_text_color = mix_bg_fg (GTK_WIDGET(wckp->plugin), "normal", wckp->prefs->inactive_text_alpha / 100.0, wckp->prefs->inactive_text_shade / 100.0);
 }
 
