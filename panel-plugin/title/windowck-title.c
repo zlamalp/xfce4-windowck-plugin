@@ -169,7 +169,7 @@ static void on_name_changed (WnckWindow *controlwindow, WindowckPlugin *wckp)
             {
                 if (wckp->prefs->two_lines)
                 {
-                    gchar *subtitle = malloc( sizeof(gchar) * ( strlen(title_text) + 1 ) );
+                    gchar *subtitle = g_malloc( sizeof(gchar) * ( strlen(title_text) + 1 ) );
                     strcpy (subtitle, part[0]);
                     if (wckp->prefs->full_name)
                     {
