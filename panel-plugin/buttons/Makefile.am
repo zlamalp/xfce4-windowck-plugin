@@ -79,6 +79,6 @@ CLEANFILES += \
 	$(libwindowck_built_sources)
 
 wckbuttons-dialogs_ui.h: wckbuttons-dialogs.glade
-	$(AM_V_GEN) exo-csource --static --strip-comments --strip-content --name=wckbuttons_dialogs_ui $< >$@
+	$(AM_V_GEN) xdt-csource --static --strip-comments --strip-content --name=wckbuttons_dialogs_ui $< >$@
 
 # vi:set ts=8 sw=8 noet ai nocindent syntax=automake:

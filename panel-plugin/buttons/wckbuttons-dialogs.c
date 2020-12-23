@@ -27,6 +27,8 @@
 
 #include <libxfce4ui/libxfce4ui.h>
 #include <libxfce4panel/xfce-panel-plugin.h>
+#include <libxfce4panel/xfce-panel-macros.h>
+
 #include <common/theme.h>
 
 #include "wckbuttons.h"

@@ -79,6 +79,6 @@ CLEANFILES += \
 	$(libwindowck_built_sources)
 
 windowck-dialogs_ui.h: windowck-dialogs.glade
-	$(AM_V_GEN) exo-csource --static --strip-comments --strip-content --name=windowck_dialogs_ui $< >$@
+	$(AM_V_GEN) xdt-csource --static --strip-comments --strip-content --name=windowck_dialogs_ui $< >$@
 	
 # vi:set ts=8 sw=8 noet ai nocindent syntax=automake:
