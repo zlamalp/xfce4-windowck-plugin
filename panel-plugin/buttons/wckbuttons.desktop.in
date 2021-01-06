@@ -7,3 +7,4 @@ Icon=wckbuttons-plugin
 X-XFCE-Module=wckbuttons
 X-XFCE-Internal=false
 X-XFCE-Unique=false
+X-XFCE-API=2.0

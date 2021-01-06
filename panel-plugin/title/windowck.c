@@ -202,7 +202,7 @@ void create_symbol (gboolean show_app_icon, WindowckPlugin *wckp)
     }
     else
     {
-        gtk_widget_hide_all (GTK_WIDGET(wckp->icon->eventbox));
+        gtk_widget_hide (GTK_WIDGET(wckp->icon->eventbox));
     }
 }
 
@@ -217,7 +217,7 @@ static void create_icon (WindowckPlugin *wckp)
 
     gtk_event_box_set_visible_window (wckp->icon->eventbox, FALSE);
 
-    gtk_box_pack_start (GTK_BOX (wckp->hvbox), GTK_WIDGET(wckp->icon->eventbox), FALSE, FALSE, 0);
+    gtk_box_pack_start (GTK_BOX (wckp->box), GTK_WIDGET(wckp->icon->eventbox), FALSE, FALSE, 0);
 
     create_symbol (wckp->prefs->show_app_icon, wckp);
 }
@@ -253,7 +253,9 @@ static WindowckPlugin * windowck_new(XfcePanelPlugin *plugin)
 
     wckp->alignment = gtk_alignment_new (0.5, 0.5, 1, 1);
 
-    wckp->hvbox = xfce_hvbox_new(orientation, FALSE, 2);
+    wckp->box = gtk_box_new (orientation, 2);
+    gtk_box_set_homogeneous (GTK_BOX (wckp->box), FALSE);
+
 
     /* some wckp widgets */
     label = gtk_label_new("");
@@ -261,20 +263,20 @@ static WindowckPlugin * windowck_new(XfcePanelPlugin *plugin)
 
     create_icon (wckp);
 
-    gtk_box_pack_start (GTK_BOX(wckp->hvbox), label, TRUE, TRUE, 0);
+    gtk_box_pack_start (GTK_BOX(wckp->box), label, TRUE, TRUE, 0);
 
     if (wckp->prefs->icon_on_right)
     {
-        gtk_box_reorder_child (GTK_BOX (wckp->hvbox), GTK_WIDGET(wckp->icon->eventbox), 1);
+        gtk_box_reorder_child (GTK_BOX (wckp->box), GTK_WIDGET(wckp->icon->eventbox), 1);
     }
 
-    gtk_container_add(GTK_CONTAINER(wckp->alignment), GTK_WIDGET(wckp->hvbox));
+    gtk_container_add(GTK_CONTAINER(wckp->alignment), GTK_WIDGET(wckp->box));
     gtk_container_add(GTK_CONTAINER(wckp->ebox), wckp->alignment);
 
     /* show widgets */
     gtk_widget_show(wckp->ebox);
     gtk_widget_show(wckp->alignment);
-    gtk_widget_show(wckp->hvbox);
+    gtk_widget_show(wckp->box);
     gtk_widget_show(label);
 
     return wckp;
@@ -291,7 +293,7 @@ static void windowck_free(XfcePanelPlugin *plugin, WindowckPlugin *wckp)
         gtk_widget_destroy(dialog);
 
     /* destroy the panel widgets */
-    gtk_widget_destroy(wckp->hvbox);
+    gtk_widget_destroy(wckp->box);
 
     /* free the plugin structure */
     g_slice_free(WindowIcon, wckp->icon);
@@ -304,7 +306,7 @@ static void windowck_free(XfcePanelPlugin *plugin, WindowckPlugin *wckp)
 static void windowck_orientation_changed(XfcePanelPlugin *plugin, GtkOrientation orientation, WindowckPlugin *wckp)
 {
     /* change the orienation of the box */
-    xfce_hvbox_set_orientation(XFCE_HVBOX (wckp->hvbox), orientation);
+    gtk_orientable_set_orientation (GTK_ORIENTABLE (wckp->box), orientation);
 }
 
 

@@ -141,7 +141,7 @@ void replace_buttons (const gchar *button_layout, WBPlugin *wb)
     gint button;
 
     for (i = 0; i < BUTTONS; i++)
-        gtk_widget_hide_all(GTK_WIDGET(wb->button[i]->eventbox));
+        gtk_widget_hide(GTK_WIDGET(wb->button[i]->eventbox));
 
     j = 0;
     for (i = 0; i < strlen (button_layout); i++)
@@ -149,7 +149,7 @@ void replace_buttons (const gchar *button_layout, WBPlugin *wb)
         button = get_button_from_letter (button_layout[i]);
         if (button >= 0 && wb->button[button]->image)
         {
-            gtk_box_reorder_child (GTK_BOX (wb->hvbox), GTK_WIDGET(wb->button[button]->eventbox), j);
+            gtk_box_reorder_child (GTK_BOX (wb->box), GTK_WIDGET(wb->button[button]->eventbox), j);
 
             gtk_widget_show_all(GTK_WIDGET(wb->button[button]->eventbox));
             j++;

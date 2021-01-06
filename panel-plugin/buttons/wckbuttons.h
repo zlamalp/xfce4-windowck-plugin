@@ -86,7 +86,7 @@ typedef struct {
 
     /* Widgets */
     GtkWidget *ebox;
-    GtkWidget *hvbox;
+    GtkWidget *box;
 
     WindowButton  **button;         // Array of buttons
 

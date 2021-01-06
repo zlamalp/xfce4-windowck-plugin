@@ -31,19 +31,13 @@
 #include <gtk/gtk.h>
 #include <pango/pango-font.h>
 
-GdkColor query_color (GtkWidget * win, GdkColor c);
-GdkColor shade (GdkColor  color, float s);
-GdkColor mix (GdkColor color2, GdkColor  color1, float a);
 gchar                   *mix_bg_fg                              (GtkWidget * win,
-                                                                 const gchar * state,
+                                                                 GtkStateFlags state,
                                                                  float alpha,
                                                                  float beta);
-gchar                   *get_ui_color                             (GtkWidget *,
+gchar                   *get_ui_color                           (GtkWidget *,
                                                                  const gchar *,
-                                                                 const gchar *);
-GdkGC                   *getUIStyle_gc                          (GtkWidget *,
-                                                                 const gchar *,
-                                                                 const gchar *);
+                                                                 GtkStateFlags);
 PangoFontDescription    *getUIPangoFontDesc                     (GtkWidget *);
 PangoContext            *getUIPangoContext                      (GtkWidget *);
 

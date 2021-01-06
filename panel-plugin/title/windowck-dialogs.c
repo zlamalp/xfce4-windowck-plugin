@@ -156,9 +156,9 @@ static void on_icon_on_right_toggled(GtkToggleButton *icon_on_right, WindowckPlu
     wckp->prefs->icon_on_right = gtk_toggle_button_get_active(icon_on_right);
 
     if (wckp->prefs->icon_on_right)
-        gtk_box_reorder_child (GTK_BOX (wckp->hvbox), GTK_WIDGET(wckp->icon->eventbox), 1);
+        gtk_box_reorder_child (GTK_BOX (wckp->box), GTK_WIDGET(wckp->icon->eventbox), 1);
     else
-        gtk_box_reorder_child (GTK_BOX (wckp->hvbox), GTK_WIDGET(wckp->icon->eventbox), 0);
+        gtk_box_reorder_child (GTK_BOX (wckp->box), GTK_WIDGET(wckp->icon->eventbox), 0);
 }
 
 
@@ -262,7 +262,7 @@ static void on_title_padding_changed(GtkSpinButton *title_padding, WindowckPlugi
 {
     wckp->prefs->title_padding = gtk_spin_button_get_value(title_padding);
     gtk_alignment_set_padding(GTK_ALIGNMENT(wckp->alignment), ICON_PADDING, ICON_PADDING, wckp->prefs->title_padding, wckp->prefs->title_padding);
-    gtk_box_set_spacing (GTK_BOX(wckp->hvbox), wckp->prefs->title_padding);
+    gtk_box_set_spacing (GTK_BOX(wckp->box), wckp->prefs->title_padding);
 }
 
 
@@ -523,7 +523,7 @@ void windowck_configure(XfcePanelPlugin *plugin, WindowckPlugin *wckp)
     name = xfce_panel_plugin_get_display_name (plugin);
     dialog = xfce_titled_dialog_new_with_buttons (_(name),
                                                 GTK_WINDOW (gtk_widget_get_toplevel (GTK_WIDGET (plugin))),
-                                                GTK_DIALOG_DESTROY_WITH_PARENT | GTK_DIALOG_NO_SEPARATOR,
+                                                GTK_DIALOG_DESTROY_WITH_PARENT,
                                                 GTK_STOCK_HELP, GTK_RESPONSE_HELP,
                                                 GTK_STOCK_CLOSE, GTK_RESPONSE_OK,
                                                 NULL);

@@ -233,20 +233,20 @@ void on_wck_state_changed (WnckWindow *controlwindow, gpointer data)
         }
         else
         {
-            GdkColor color;
+            GdkRGBA rgba;
 
             if (controlwindow
                 && ((wnck_window_get_window_type (controlwindow) != WNCK_WINDOW_DESKTOP)
                     || wckp->prefs->show_on_desktop))
             {
                 if (wnck_window_is_active(controlwindow)
-                    && gdk_color_parse (wckp->prefs->active_text_color, &color))
+                    && gdk_rgba_parse (&rgba, wckp->prefs->active_text_color))
                 {
-                    gtk_widget_modify_fg (wckp->icon->symbol, GTK_STATE_NORMAL, &color);
+                    gtk_widget_override_color (wckp->icon->symbol, GTK_STATE_FLAG_NORMAL, &rgba);
                 }
-                else if (gdk_color_parse (wckp->prefs->inactive_text_color, &color))
+                else if (gdk_rgba_parse (&rgba, wckp->prefs->inactive_text_color))
                 {
-                    gtk_widget_modify_fg (wckp->icon->symbol, GTK_STATE_NORMAL, &color);
+                    gtk_widget_override_color (wckp->icon->symbol, GTK_STATE_FLAG_NORMAL, &rgba);
                 }
             }
         }
@@ -267,13 +267,13 @@ void on_control_window_changed (WnckWindow *controlwindow, WnckWindow *previous,
         || ((wnck_window_get_window_type (controlwindow) == WNCK_WINDOW_DESKTOP)
         && !wckp->prefs->show_on_desktop))
     {
-        if (gtk_widget_get_visible(GTK_WIDGET(wckp->hvbox)))
-            gtk_widget_hide_all(GTK_WIDGET(wckp->hvbox));
+        if (gtk_widget_get_visible(GTK_WIDGET(wckp->box)))
+            gtk_widget_hide(GTK_WIDGET(wckp->box));
     }
     else
     {
-        if (!gtk_widget_get_visible(GTK_WIDGET(wckp->hvbox)))
-            gtk_widget_show_all(GTK_WIDGET(wckp->hvbox));
+        if (!gtk_widget_get_visible(GTK_WIDGET(wckp->box)))
+            gtk_widget_show_all(GTK_WIDGET(wckp->box));
     }
 
     if (controlwindow)
@@ -287,7 +287,7 @@ void on_control_window_changed (WnckWindow *controlwindow, WnckWindow *previous,
         else if (wckp->prefs->show_on_desktop && !wckp->prefs->show_app_icon)
         {
             if (gtk_widget_get_visible(GTK_WIDGET(wckp->icon->eventbox)))
-                gtk_widget_hide_all (GTK_WIDGET(wckp->icon->eventbox));
+                gtk_widget_hide (GTK_WIDGET(wckp->icon->eventbox));
         }
     }
 
@@ -390,8 +390,8 @@ gboolean on_icon_released(GtkWidget *title, GdkEventButton *event, WindowckPlugi
 static void set_title_colors(WindowckPlugin *wckp)
 {
     /* get plugin widget style */
-    wckp->prefs->active_text_color = get_ui_color  (GTK_WIDGET(wckp->plugin), "fg", "normal");
-    wckp->prefs->inactive_text_color = mix_bg_fg (GTK_WIDGET(wckp->plugin), "normal", wckp->prefs->inactive_text_alpha / 100.0, wckp->prefs->inactive_text_shade / 100.0);
+    wckp->prefs->active_text_color = get_ui_color (GTK_WIDGET(wckp->plugin), GTK_STYLE_PROPERTY_COLOR, GTK_STATE_FLAG_NORMAL);
+    wckp->prefs->inactive_text_color = mix_bg_fg (GTK_WIDGET(wckp->plugin), GTK_STATE_FLAG_NORMAL, wckp->prefs->inactive_text_alpha / 100.0, wckp->prefs->inactive_text_shade / 100.0);
 }
 
 
@@ -480,7 +480,7 @@ void init_title (WindowckPlugin *wckp)
     }
 
     gtk_alignment_set_padding(GTK_ALIGNMENT(wckp->alignment), ICON_PADDING, ICON_PADDING, wckp->prefs->title_padding, wckp->prefs->title_padding);
-    gtk_box_set_spacing (GTK_BOX(wckp->hvbox), wckp->prefs->title_padding);
+    gtk_box_set_spacing (GTK_BOX(wckp->box), wckp->prefs->title_padding);
 
     /* get the xsettings chanel to update the gtk theme */
     wckp->x_channel = wck_properties_get_channel (G_OBJECT (wckp->plugin), "xsettings");
