@@ -1,3 +1,13 @@
+xfce4-windowck-plugin (0.4.6) UNRELEASED; urgency=low
+
+  0.4.6
+    Fix #51: Build warnings
+    Fix #56: add some checks while processing changes of unfocused window title
+    Fix #64 Added Russian translation
+    Fix #71 Fix crash on closing last window
+
+ -- Pavel Zlámal <zlamal.pavel87@seznam.cz>  Wed, 6 Jan 2021 08:00:00 +0100
+
 xfce4-windowck-plugin (0.4.5) UNRELEASED; urgency=low
 
   0.4.5

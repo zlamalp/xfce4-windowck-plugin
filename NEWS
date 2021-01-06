@@ -1,6 +1,8 @@
 0.4.6
     Fix #51: Build warnings
     Fix #56: add some checks while processing changes of unfocused window title
+    Fix #64 Added Russian translation
+    Fix #71 Fix crash on closing last window
 0.4.5
     Fix #28 - Updated deb packages dependency for ubuntu 15.10+
 0.4.4
