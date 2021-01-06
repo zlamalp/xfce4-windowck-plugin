@@ -34,6 +34,7 @@ po/Makefile.in.in
 po/POTFILES
 stamp-*
 po/*.mo
+po/*.pot
 themes/**/*.png
 themes/**/*.xpm
 arch/*
