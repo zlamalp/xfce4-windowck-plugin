@@ -16,6 +16,10 @@ config*
 debian/control.save
 debian/files
 debian/xfce4-windowck-plugin*
+debian/.debhelper/
+debian/autoreconf.after
+debian/autoreconf.before
+debian/debhelper-build-stamp
 depcomp
 install-sh
 intltool*
