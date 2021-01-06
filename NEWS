@@ -1,3 +1,5 @@
+0.5.0
+	Fix #72 Port to GTK 3
 0.4.8
 	Bumped compatibility for Debian 10 / Xubuntu 20.04
 0.4.7

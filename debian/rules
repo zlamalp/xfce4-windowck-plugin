@@ -13,8 +13,8 @@
 	dh $@
 
 override_dh_auto_configure:
-	./autogen.sh --prefix=/usr
-	./configure --prefix=/usr --libdir=/usr/lib/$(DEB_HOST_MULTIARCH)
+	./autogen.sh --prefix=/usr --libdir=/usr/lib/$(DEB_HOST_MULTIARCH)
+#	./configure --prefix=/usr --libdir=/usr/lib/$(DEB_HOST_MULTIARCH)
 
 override_dh_auto_install:
 	dh_auto_install

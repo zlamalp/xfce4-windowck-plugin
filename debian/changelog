@@ -1,3 +1,10 @@
+xfce4-windowck-plugin (0.5.0) UNRELEASED; urgency=low
+
+  0.5.0
+    Fix #72 Port to GTK3 by qarkai
+
+ -- Pavel Zlámal <zlamal.pavel87@seznam.cz>  Wed, 6 Jan 2021 10:40:00 +0100
+
 xfce4-windowck-plugin (0.4.8) UNRELEASED; urgency=low
 
   0.4.8
