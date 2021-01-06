@@ -1,3 +1,10 @@
+xfce4-windowck-plugin (0.4.8) UNRELEASED; urgency=low
+
+  0.4.8
+    Bumped compatibility for Debian 10 / Xubuntu 20.04
+
+ -- Pavel Zlámal <zlamal.pavel87@seznam.cz>  Wed, 6 Jan 2021 10:00:00 +0100
+
 xfce4-windowck-plugin (0.4.7) UNRELEASED; urgency=low
 
   0.4.7
