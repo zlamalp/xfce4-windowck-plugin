@@ -10,9 +10,10 @@
 #export DH_VERBOSE=1
 
 %:
-	dh $@ 
-	
+	dh $@
+
 override_dh_auto_configure:
+	./autogen.sh --prefix=/usr
 	./configure --prefix=/usr --libdir=/usr/lib/$(DEB_HOST_MULTIARCH)
 
 override_dh_auto_install:
