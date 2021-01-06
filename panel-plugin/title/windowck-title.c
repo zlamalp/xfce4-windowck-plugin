@@ -98,10 +98,10 @@ static void on_icon_changed(WnckWindow *controlwindow, WindowckPlugin *wckp)
 static gboolean is_window_on_active_workspace_and_no_other_maximized_windows_above(WnckWindow *window)
 {
     WnckWorkspace *workspace = wnck_window_get_workspace(window);
-    WnckScreen *screen = wnck_workspace_get_screen(workspace);
-    if (wnck_screen_get_active_workspace(screen) != workspace) {
+    WnckScreen *screen = workspace ? wnck_workspace_get_screen(workspace) : NULL;
+    if (!screen || wnck_screen_get_active_workspace(screen) != workspace)
         return FALSE;
-    }
+
     GList *windows = wnck_screen_get_windows_stacked(screen);
     GList *top_window = g_list_last(windows);
     GList *bottom_window = g_list_first(windows);
@@ -119,7 +119,7 @@ static gboolean is_window_on_active_workspace_and_no_other_maximized_windows_abo
 static void on_name_changed (WnckWindow *controlwindow, WindowckPlugin *wckp)
 {
     gint i, n;
-    
+
     const gchar *title_text;
 
     if (controlwindow
@@ -170,7 +170,7 @@ static void on_name_changed (WnckWindow *controlwindow, WindowckPlugin *wckp)
             {
                 if (wckp->prefs->two_lines)
                 {
-                    gchar *subtitle = malloc( sizeof(gchar) * ( strlen(title_text) + 1 ) );
+                    gchar *subtitle = g_malloc( sizeof(gchar) * ( strlen(title_text) + 1 ) );
                     strcpy (subtitle, part[0]);
                     if (wckp->prefs->full_name)
                     {
