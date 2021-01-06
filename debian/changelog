@@ -1,3 +1,11 @@
+xfce4-windowck-plugin (0.4.7) UNRELEASED; urgency=low
+
+  0.4.7
+    Fix crash of title plugin when show on desktop (by mskalski)
+    Fix #30 Fixed memory leak (by invidian)
+
+ -- Pavel Zlámal <zlamal.pavel87@seznam.cz>  Wed, 6 Jan 2021 09:40:00 +0100
+
 xfce4-windowck-plugin (0.4.6) UNRELEASED; urgency=low
 
   0.4.6
